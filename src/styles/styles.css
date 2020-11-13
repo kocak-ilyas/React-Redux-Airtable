@@ -1,0 +1,32 @@
+.backgroundClock {
+    background-image: url("https://i.gifer.com/79K5.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+/* 
+    background-image: url("./image/backGround.jpg");
+    background-image: url("./image/bbb.jpg");
+    background: 0.5;
+    background-color: rgba(209, 38, 38, 0.705);
+    background-color: rgba(67, 69, 194, 0.774);
+    background-image: url("https://www.qliktag.com/wp-content/uploads/2018/01/matrix-2953869_960_720.jpg");
+    padding: 5px;
+    width: 150px;
+    height: 200px;
+    background-blend-mode: lighten;
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-size: 98%;
+    border: 1px solid black;
+    background-position: top center;
+    border-image-slice: 1%;
+    transition: all 0.5s;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.3;
+    -khtml-opacity: 0.3;
+    opacity: 0.1;
+*/
