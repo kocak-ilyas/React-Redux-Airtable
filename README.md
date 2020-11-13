@@ -1,2 +1,2 @@
-Airtable-redux
+React-Redux-Airtable
 Shopping Cart
