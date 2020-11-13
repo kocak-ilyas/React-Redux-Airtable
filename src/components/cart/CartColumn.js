@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -18,7 +20,6 @@ import {
   decToCount,
   removeToCart,
 } from "../../redux/actions/cartActions";
-import { Link } from "react-router-dom";
 
 export default function CartColumn() {
   const currentCart = useSelector((state) => state.cartReducer);
