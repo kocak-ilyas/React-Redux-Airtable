@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 
-
 import Airtable from "airtable";
 const table = new Airtable({ apiKey: process.env.REACT_APP_airtable_key }).base(
   process.env.REACT_APP_airtable_base
@@ -14,7 +13,11 @@ export const getAdvertisements = () => (dispatch) => {
     })
     .eachPage((records) => {
       dispatch({ type: actionTypes.GET_ADVERTISEMENTS, payload: records });
-    });
+    })
+    // .catch((error) => {
+    //   // console.log("there is a error");
+    //   throw error;
+    // });
 };
 
 export const getTopNavbar = () => (dispatch) => {
@@ -51,7 +54,7 @@ export const getProducts = () => (dispatch) => {
         "image",
         "buyCounter",
         "showCart",
-        "countOfCart"
+        "countOfCart",
       ],
       sort: [{ field: "buyCounter", direction: "desc" }],
     })

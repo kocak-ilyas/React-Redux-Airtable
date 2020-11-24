@@ -18,6 +18,7 @@ import {
   decToCount,
   removeToCart,
 } from "../../redux/actions/cartActions";
+import { Link } from "react-router-dom";
 
 export default function CartPage() {
   const currentCart = useSelector((state) => state.cartReducer);
@@ -35,6 +36,9 @@ export default function CartPage() {
   }, [currentCart]);
   return (
     <div>
+      <Link to="">
+        <Badge color="warning">Go to HomePage</Badge>
+      </Link>
       {currentCart.cart.length === 0 ? (
         <div>There is no Product in cart</div>
       ) : (

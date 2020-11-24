@@ -8,7 +8,7 @@ export const addToCart = (product, cart) => (dispatch) => {
     if (item.id === product.id) {
       item.fields.countOfCart += 1;
       productMatch = true;
-      alertify.set("notifier", "position", "bottom-right");
+      // alertify.set("notifier", "position", "bottom-right");
       alertify.success(
         product.fields.name + " count: " + item.fields.countOfCart,
         2
@@ -19,7 +19,7 @@ export const addToCart = (product, cart) => (dispatch) => {
   if (!productMatch) {
     product.fields.countOfCart = 1;
     tempCart.push(product);
-    alertify.set("notifier", "position", "bottom-right");
+    // alertify.set("notifier", "position", "bottom-right");
     alertify.success(product.fields.name + " added to cart :)", 3);
 
     dispatch({ type: actionTypes.UPDATE_TO_CART, payload: tempCart });
@@ -31,7 +31,7 @@ export const incToCount = (product, cart) => (dispatch) => {
   tempCart.forEach((item) => {
     if (item.id === product.id) {
       item.fields.countOfCart += 1;
-      alertify.set("notifier", "position", "bottom-right");
+      // alertify.set("notifier", "position", "bottom-right");
       alertify.success(
         product.fields.name + " count: " + item.fields.countOfCart,
         2
@@ -47,7 +47,7 @@ export const decToCount = (product, cart) => (dispatch) => {
     tempCart.forEach((item) => {
       if (item.id === product.id) {
         item.fields.countOfCart -= 1;
-        alertify.set("notifier", "position", "bottom-right");
+        // alertify.set("notifier", "position", "bottom-right");
         alertify.error(
           product.fields.name + " count: " + item.fields.countOfCart,
           2
@@ -60,7 +60,7 @@ export const decToCount = (product, cart) => (dispatch) => {
 
 export const removeToCart = (product, cart) => (dispatch) => {
   const tempCart = cart.cart.filter((item) => item.id !== product.id);
-  alertify.set("notifier", "position", "top-center");
+  // alertify.set("notifier", "position", "top-center");
   alertify.error(product.fields.name + " removed from cart!", 2);
   dispatch({ type: actionTypes.UPDATE_TO_CART, payload: tempCart });
 };
