@@ -101,3 +101,5 @@ package-lock.json
 /DeleteAll
 /package-lock.json
 /.vscode
+# Local Netlify folder
+.netlify
