@@ -64,12 +64,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-.env.test
-
-.cache
-
 # Next.js build output
 .next
 
@@ -94,6 +88,9 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
+# Local Netlify folder
+.netlify
+
 # TernJS port file
 .tern-port
 package-lock.json
@@ -101,5 +98,8 @@ package-lock.json
 /DeleteAll
 /package-lock.json
 /.vscode
-# Local Netlify folder
-.netlify
+
+# dotenv environment variables file
+.cache
+.env.test
+# .env
