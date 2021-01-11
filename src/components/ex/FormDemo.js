@@ -25,7 +25,7 @@ export default function FormDemo() {
           <Label for="idEmail" sm={2}>
             Email
           </Label>
-          <Col sm={10}>
+          <Col sm={7}>
             <Input
               type="email"
               name="email"
@@ -33,6 +33,17 @@ export default function FormDemo() {
               placeholder="Your Email"
               onChange={onchangeHandler}
             />
+          </Col>
+          <Col sm={{ size: 2, offset: 1 }}>
+            <Label check>
+              <Button color="link" outline className="m-0 p-0">
+                <h4 className="m-0 p-0">
+                  <Badge color="info" pill className="m-1 p-1">
+                    Check me out
+                  </Badge>
+                </h4>
+              </Button>
+            </Label>
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -47,14 +58,9 @@ export default function FormDemo() {
               placeholder="Your Password"
             />
           </Col>
-        </FormGroup>
-        <FormGroup check row>
-          <Col sm={{ size: 10, offset: 2 }}>
-            <Label check>
-              <Input type="checkbox" id="idCheckbox" /> Check me out
-            </Label>
+          <Col check col sm={{ size: 10, offset: 2 }}>
             <hr />
-            <Button>Submit</Button>
+            <Button color="primary">Submit</Button>
           </Col>
         </FormGroup>
       </Form>
