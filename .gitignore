@@ -102,4 +102,4 @@ package-lock.json
 # dotenv environment variables file
 .cache
 .env.test
-# .env
+.env
