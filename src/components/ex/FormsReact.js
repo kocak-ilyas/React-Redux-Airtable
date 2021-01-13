@@ -1,40 +1,116 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Badge,Button,Form,InputGroup,InputGroupAddon,InputGroupText,FormGroup,Label,Col,FormText,Row} from "reactstrap";
+import {
+  Badge,
+  Button,
+  Form,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  FormGroup,
+  Label,
+  Col,
+  FormText,
+  Row,
+  Input,
+  FormFeedback,
+} from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 
 export default function FormsReact() {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data) => console.log(data);
   return (
-<div>
-    <Link to=""><Badge color="warning">Go to HomePage</Badge></Link>
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <Link to="">
+        <Badge color="warning">Go to HomePage</Badge>
+      </Link>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Row form>
-          <Col sm={2}><Label for="idEmail" sm={2}>Email</Label></Col>
-          <Col sm={6}><InputGroup>
-              <InputGroupAddon addonType="prepend"><InputGroupText>@</InputGroupText></InputGroupAddon>
-              <input autoFocus type="email" name="nameEmail" id="idEmail" placeholder="Write own e-mail address" ref={register({ required: true })}/>
-              {errors.nameEmail && (<FormText>This field can not be empty!!!</FormText>)}
-          </InputGroup></Col>
-          <Col sm={2}><Button color="link" outline className="m-0 p-0">
-              <h4 className="m-0 p-0"><Badge color="info" pill className="m-1 p-1">Check me out</Badge></h4>
-          </Button></Col>
-        </Row> <br/>
-        <Row form>
-            <Col sm={2}><Label for="idPassword" sm={2}>Password</Label></Col>
-            <Col sm={9}>
+          <Col sm={2}>
+            <Label for="idEmail" sm={2}>
+              Email
+            </Label>
+          </Col>
+          <Col sm={6}>
             <InputGroup>
-               <InputGroupAddon addonType="prepend"><InputGroupText><FcKey/></InputGroupText></InputGroupAddon>
-                 <input type="password"  name="namePassword" id="idPassword" placeholder="Don't tell anyone your password!!!"
-                    ref={register({required: "PASSWORD REQUİRED", minLength: { value: 8, message: "TOO SHORT" }, maxLength: { value: 12, message: "TOO LONG" }})}/>
-             </InputGroup>
-            {errors.namePassword && (<FormText>This field can not be empty!!!</FormText>)}
-            </Col>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>@</InputGroupText>
+              </InputGroupAddon>
+              <input
+                autoFocus
+                className="form-control"
+                type="email"
+                name="nameEmail"
+                id="idEmail"
+                placeholder="Write own e-mail address"
+                ref={register({ required: "This field can not be empty!!!" })}
+              />
+            </InputGroup>{" "}
+            {errors.nameEmail && (
+              <FormText>{errors.nameEmail.message}</FormText>
+            )}
+          </Col>
+          <Col sm={2}>
+            <Button color="link" outline className="m-0 p-0">
+              <h4 className="m-0 p-0">
+                <Badge color="info" pill className="m-1 p-1">
+                  Check me out
+                </Badge>
+              </h4>
+            </Button>
+          </Col>
+        </Row>{" "}
+        <br />
+        <Row form>
+          <Col sm={2}>
+            <Label for="idPassword" sm={2}>
+              Password
+            </Label>
+          </Col>
+          <Col sm={9}>
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>
+                  <FcKey />
+                </InputGroupText>
+              </InputGroupAddon>
+              {/* <Input valid /> */}
+              <FormFeedback valid tooltip>
+                Sweet! that name is available
+              </FormFeedback>
+              <input valid
+                className="form-control is-valid"
+                type="password"
+                name="namePassword"
+                id="idPassword"
+                placeholder="Don't tell anyone your password!!!"
+                ref={register({
+                  required: "This field can not be empty!!!",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 8 characters!!!",
+                  },
+                  maxLength: {
+                    value: 12,
+                    message: "Password must be maximum of 12 characters!!!",
+                  },
+                })}
+              />
+            </InputGroup>
+            {errors.namePassword && (
+              <FormText>{errors.namePassword.message}</FormText>
+            )}
+          </Col>
         </Row>
-        <FormGroup><Col col sm={10}><hr/><input type="submit" color="primary"/></Col></FormGroup>
-    </Form>
+        <FormGroup>
+          <Col col sm={10}>
+            <hr />
+            <Button color="primary">Sign In</Button>
+          </Col>
+        </FormGroup>
+      </Form>
     </div>
   );
 }
