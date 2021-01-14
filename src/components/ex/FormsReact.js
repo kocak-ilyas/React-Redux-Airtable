@@ -31,7 +31,7 @@ export default function FormsReact() {
     passwordClassName: "form-control", // form-control is-invalid
   });
   const onSubmit = (data) => {
-    setUserData(data);
+    setUserData({...userData,  nameEmail: data.nameEmail, namePassword: data.namePassword });
     console.log("onsubmit-data", data);
     console.log("onsubmit-userData", userData);
   };
