@@ -1,5 +1,7 @@
-React-Redux-Airtable
+﻿React-Redux-Airtable
 Shopping Cart
+
+Tavsiye
 
 <!-- button is Blue:active -->
 <Button active={state.category.id===cart.fields.id}>seçileni maviye boya</Button>

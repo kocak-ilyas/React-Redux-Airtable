@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Badge,
@@ -12,15 +12,37 @@ import {
   Col,
   FormText,
   Row,
-  Input,
   FormFeedback,
+  Input,
 } from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 
 export default function FormsReact() {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [userData, setUserData] = useState({
+    nameEmail: "",
+    namePassword: "",
+  });
+  const [validation, setValidation] = useState({
+    isEmailValidation: false,
+    emailClassName: "form-control", // form-control is-invalid
+    isPasswordValidation: false,
+    passwordClassName: "form-control", // form-control is-invalid
+  });
+  const onSubmit = (data) => {
+    setUserData(data);
+    console.log("onsubmit-data", data);
+    console.log("onsubmit-userData", userData);
+  };
+  const onValidation = (data) => {
+    // setValidation(data);
+  };
+
+  useEffect(() => {
+    console.log("useEffect userData", userData);
+  }, [userData]);
+
   return (
     <div>
       <Link to="">
@@ -40,14 +62,23 @@ export default function FormsReact() {
               </InputGroupAddon>
               <input
                 autoFocus
-                className="form-control"
-                type="email"
+                className={validation.emailClassName}
+                type="text"
+                // type="email"
                 name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
                 ref={register({ required: "This field can not be empty!!!" })}
               />
-            </InputGroup>{" "}
+              {/* <div class="invalid-feedback">This email used before!!!</div>
+              <div class="valid-feedback">This email is available...</div> */}
+              <FormFeedback valid tooltip>
+                Sweet! That email is available
+              </FormFeedback>
+              <FormFeedback tooltip>
+                Oh no! That name is already taken
+              </FormFeedback>
+            </InputGroup>
             {errors.nameEmail && (
               <FormText>{errors.nameEmail.message}</FormText>
             )}
@@ -76,12 +107,8 @@ export default function FormsReact() {
                   <FcKey />
                 </InputGroupText>
               </InputGroupAddon>
-              {/* <Input valid /> */}
-              <FormFeedback valid tooltip>
-                Sweet! that name is available
-              </FormFeedback>
-              <input valid
-                className="form-control is-valid"
+              <input
+                className={validation.passwordClassName}
                 type="password"
                 name="namePassword"
                 id="idPassword"
@@ -98,6 +125,10 @@ export default function FormsReact() {
                   },
                 })}
               />
+              {/* <div class="invalid-feedback">Password is wrong!!!</div>
+              <div class="valid-feedback">Password is correct</div> */}
+              <FormFeedback valid tooltip>Password is correct</FormFeedback>
+              <FormFeedback tooltip>Password is wrong!!!</FormFeedback>
             </InputGroup>
             {errors.namePassword && (
               <FormText>{errors.namePassword.message}</FormText>
@@ -107,6 +138,13 @@ export default function FormsReact() {
         <FormGroup>
           <Col col sm={10}>
             <hr />
+            <FormGroup check>
+              <Label check>
+                <Input required type="checkbox" />I agree to{" "}
+                <a href="/">Conditions of Use</a> and{" "}
+                <a href="/">Privacy Notice</a>.
+              </Label>
+            </FormGroup>
             <Button color="primary">Sign In</Button>
           </Col>
         </FormGroup>
@@ -114,43 +152,6 @@ export default function FormsReact() {
     </div>
   );
 }
-/*
-<FormGroup className="position-relative">
-<Label for="exampleEmail">Valid input</Label>
-<Input valid />
-<FormFeedback valid tooltip>Sweet! that name is available</FormFeedback>
-<FormText>Example help text that remains unchanged.</FormText>
-</FormGroup>
-<FormGroup className="position-relative">
-<Label for="examplePassword">Invalid input</Label>
-<Input invalid />
-<FormFeedback tooltip>Oh noes! that name is already taken</FormFeedback>
-<FormText>Example help text that remains unchanged.</FormText>
-</FormGroup>
-*/
-/*
-<form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          autoFocus
-          type="email"
-          name="mailRequired"
-          placeholder="e-mail"
-          ref={register({ required: true })}
-          // ref={register}
-          // defaultValue="test"
-        />
-        {/* <input
-        name="passwordRequired"
-        placeholder="password"
-        ref={register({ required: true })}
-      />
-        {errors.mailRequired && <span>This field is required</span>}
-         {errors.passwordRequired && <span>This field is required</span>}
-        <input type="submit" />
-      </form>
-
-*/
-
 // import React, { useState, useEffect } from "react";
 // import { useForm } from "react-hook-form";
 // import { Input } from "reactstrap";
@@ -211,53 +212,6 @@ export default function FormsReact() {
 
 //         <button type="submit">Submit</button>
 //       </form>
-//     </div>
-//   );
-// }
-
-/////////////////////////////////////
-// import React from "react";
-// import { useForm } from "react-hook-form";
-
-// export default function FormsReact() {
-//   const { register, handleSubmit } = useForm();
-//   const onSubmit = data => console.log(data);
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input name="firstName" ref={register({ required: true, maxLength: 20 })} />
-//       <input name="lastName" ref={register({ pattern: /^[A-Za-z]+$/i })} />
-//       <input name="age" type="number" ref={register({ min: 18, max: 99 })} />
-//       <input type="submit" />
-//     </form>
-//   );
-// }
-/////////////////////////////////////
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { Col, Form, FormGroup, Label, Input, Button, Badge } from "reactstrap";
-// import { useForm } from "react-hook-form";
-
-// export default function FormsReact() {
-//   const { register, handleSubmit } = useForm();
-//   const onSubmit = (data) => alert(JSON.stringify(data));
-//   return (
-//     <div>
-//       <Link to="">
-//         <Badge color="warning">Go to HomePage</Badge>
-//       </Link>
-//       <Form onSubmit={handleSubmit(onSubmit)}>
-//         <input name="firstName" ref={register} placeholder="First name" />
-//         <input name="lastName" ref={register} placeholder="Last name" />
-//         <select name="category" ref={register}>
-//           <option value="">Select...</option>
-//           <option value="A">Category A</option>
-//           <option value="B">Category B</option>
-//         </select>
-//         {/* <Input type="submit" /> */}
-//         <Button type="submit">Login</Button>
-//       </Form>
 //     </div>
 //   );
 // }
