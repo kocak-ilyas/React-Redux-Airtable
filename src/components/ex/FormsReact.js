@@ -13,7 +13,7 @@ import {
   FormText,
   Row,
   FormFeedback,
-  Input,
+  CustomInput,
 } from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
@@ -35,9 +35,9 @@ export default function FormsReact() {
     console.log("onsubmit-data", data);
     console.log("onsubmit-userData", userData);
   };
-  const onValidation = (data) => {
-    // setValidation(data);
-  };
+  // const onValidation = (data) => {
+  //   setValidation(data);
+  // };
 
   useEffect(() => {
     console.log("useEffect userData", userData);
@@ -127,7 +127,9 @@ export default function FormsReact() {
               />
               {/* <div class="invalid-feedback">Password is wrong!!!</div>
               <div class="valid-feedback">Password is correct</div> */}
-              <FormFeedback valid tooltip>Password is correct</FormFeedback>
+              <FormFeedback valid tooltip>
+                Password is correct
+              </FormFeedback>
               <FormFeedback tooltip>Password is wrong!!!</FormFeedback>
             </InputGroup>
             {errors.namePassword && (
@@ -137,14 +139,23 @@ export default function FormsReact() {
         </Row>
         <FormGroup>
           <Col col sm={10}>
-            <hr />
+            <br />
             <FormGroup check>
               <Label check>
-                <Input required type="checkbox" />I agree to{" "}
-                <a href="/">Conditions of Use</a> and{" "}
-                <a href="/">Privacy Notice</a>.
+                <Row for="ConditionsCheckbox">
+                  <CustomInput
+                    type="switch"
+                    id="ConditionsCustomSwitch"
+                    required
+                  />{" "}
+                  <h6>
+                    I agree to <a href="/">Conditions of Use</a> and{" "}
+                    <a href="/">Privacy Notice</a>.
+                  </h6>
+                </Row>
               </Label>
-            </FormGroup>
+            </FormGroup>{" "}
+            <hr />
             <Button color="primary">Sign In</Button>
           </Col>
         </FormGroup>
