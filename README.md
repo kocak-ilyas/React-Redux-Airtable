@@ -15,3 +15,9 @@ Linkedin            : https://www.linkedin.com/in/ilyas-kocak-2053421a5
 <br/>
 GitHub              : https://github.com/kocak-ilyas
 <br/>
+<img
+    className="shadow-sm justify-content-center rounded-pill m-0 p-0 "
+    src="./src/image/website_image.jpg"
+    alt=""
+    width="70"
+/>
