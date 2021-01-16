@@ -5,8 +5,7 @@ import "../../styles/styles.css";
 import Dashboard from "./Dashboard";
 import CartPage from "../cart/CartPage";
 import NotFound from "../common/NotFound";
-// import FormDemo from "../ex/FormDemo";
-import FormsReact from "../ex/FormsReact";
+import SignIn from "../toolbox/SignIn";
 import { Badge } from "reactstrap";
 
 export default function App() {
@@ -15,14 +14,13 @@ export default function App() {
       {/* <Link to="form">
         <Badge color="warning">Go to Form</Badge>
       </Link> */}
-      <Link to="formReact">
-        <Badge color="warning">Go to formReact</Badge>
+      <Link to="signIn">
+        <Badge color="warning">Go to Sign In</Badge>
       </Link>
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/cart" component={CartPage} />
-        {/* <Route path="/form" component={FormDemo} /> */}
-        <Route path="/formReact" component={FormsReact} />
+        <Route path="/signIn" component={SignIn} />
         <Route component={NotFound} />
       </Switch>
     </div>

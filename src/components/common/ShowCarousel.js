@@ -12,7 +12,6 @@ import { getCarousel } from  "../../redux/actions/getActions";
 export default function ShowCarousel() {
   useEffect(() => {
     dispatch(getCarousel());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const carousels = useSelector((state) => state.carouselReducer);
   const dispatch = useDispatch();

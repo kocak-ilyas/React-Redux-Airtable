@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
- 
+
 import { Container, Row, Col } from "reactstrap";
 import Fade from "react-reveal/Fade";
 
 import { getAdvertisements } from "../../redux/actions/getActions";
-import closeIcon from "../../image/closeIcon.jpg"
+import closeIcon from "../../image/closeIcon.jpg";
 
 export default function Advertisements() {
   useEffect(() => {
     dispatch(getAdvertisements());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const advertisements = useSelector((state) => state.advertisementsReducer);
   const dispatch = useDispatch();

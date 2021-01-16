@@ -22,7 +22,6 @@ export default function TopNavbar() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTopNavbar());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const topNavs = useSelector((state) => state.topNavbarReducer);
