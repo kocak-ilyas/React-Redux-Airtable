@@ -23,28 +23,14 @@ coverage
 
 # nyc test coverage
 .nyc_output
-
 .grunt
-
 bower_components
-
-# node-waf configuration
-.lock-wscript
-
-build/Release
-
-# Dependency directories
-node_modules/
-jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
 
 # TypeScript cache
 *.tsbuildinfo
-
-# Optional npm cache directory
-.npm
 
 # Optional eslint cache
 .eslintcache
@@ -54,9 +40,6 @@ typings/
 .rts2_cache_cjs/
 .rts2_cache_es/
 .rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
 
 # Output of 'npm pack'
 *.tgz
@@ -73,8 +56,6 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# public
 
 # vuepress build output
 .vuepress/dist
@@ -88,19 +69,30 @@ dist
 # DynamoDB Local files
 .dynamodb/
 
-# Local Netlify folder
-.netlify
-
 # TernJS port file
 .tern-port
-package-lock.json
-# AirtableApiKey.json
-/DeleteAll
-/package-lock.json
-/.vscode
-/src/TempFolders
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# node-waf configuration
+.lock-wscript
+build/Release
 
 # dotenv environment variables file
 .cache
 .env.test
 .env
+# Local Netlify folder
+.netlify
+package-lock.json
+/.vscode
+/DeleteAll
+/src/TempFolders
