@@ -11,12 +11,6 @@ import { Badge } from "reactstrap";
 export default function App() {
   return (
     <div className="container-fluid mt-4">
-      {/* <Link to="form">
-        <Badge color="warning">Go to Form</Badge>
-      </Link> */}
-      <Link to="signIn">
-        <Badge color="warning">Go to Sign In</Badge>
-      </Link>
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/cart" component={CartPage} />

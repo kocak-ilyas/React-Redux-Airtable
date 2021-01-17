@@ -47,7 +47,7 @@ export default function Search() {
         xs="1"
         className="badge-light shadow-sm justify-content-center border badge-pill m-0 p-0"
       >
-        <Link to="form">
+        <Link to="signIn">
           <img
             src={signIn}
             alt="Sign"
