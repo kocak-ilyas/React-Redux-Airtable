@@ -50,12 +50,12 @@ export default function FormsReact() {
       </Link>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row form>
-          <Col sm={2}>
+          <Col xs={2}>
             <Label for="idEmail" sm={2}>
               Email
             </Label>
           </Col>
-          <Col sm={6}>
+          <Col xs={6}>
             <InputGroup>
               <InputGroupAddon addonType="prepend">
                 <InputGroupText>@</InputGroupText>
