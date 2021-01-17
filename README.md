@@ -3,7 +3,7 @@
 <br/>
 <h6>Demo                : https://ilyaskocak.netlify.app/ </h6>
 <hr/>
-<h6>Linkedin            : https://www.linkedin.com/in/ilyas-kocak-2053421a5</h6>
+<h6>Linkedin            : https://www.linkedin.com/in/ilyaskocak</h6>
 <h6>Gmail               : kocakilyas18@gmail.com </h6>
 <h6>GitHub              : https://github.com/kocak-ilyas</h6>
 <hr/>
