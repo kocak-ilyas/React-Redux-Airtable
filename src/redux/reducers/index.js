@@ -6,6 +6,7 @@ import {
   productsReducer,
 } from "./getReducer";
 import { cartReducer } from "./cartReducer";
+import { userDataReducer } from "./userReducer";
 
 const rootReducers = combineReducers({
   advertisementsReducer,
@@ -13,5 +14,6 @@ const rootReducers = combineReducers({
   carouselReducer,
   productsReducer,
   cartReducer,
+  userDataReducer,
 });
 export default rootReducers;

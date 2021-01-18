@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Badge,
@@ -17,13 +18,11 @@ import {
 } from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { checkUserData } from "../../redux/actions/userActions";
 
 export default function FormsReact() {
   const { register, handleSubmit, errors } = useForm();
-  const [userData, setUserData] = useState({
-    nameEmail: "",
-    namePassword: "",
-  });
+  const dispatch = useDispatch();
   const [validation, setValidation] = useState({
     isEmailValidation: false,
     emailClassName: "form-control", // form-control is-invalid
@@ -31,23 +30,11 @@ export default function FormsReact() {
     passwordClassName: "form-control", // form-control is-invalid
   });
   const onSubmit = (data) => {
-    setUserData({...userData,  nameEmail: data.nameEmail, namePassword: data.namePassword });
-    console.log("onsubmit-data", data);
-    console.log("onsubmit-userData", userData);
+    dispatch(checkUserData(data));
   };
-  // const onValidation = (data) => {
-  //   setValidation(data);
-  // };
-
-  useEffect(() => {
-    console.log("useEffect userData", userData);
-  }, [userData]);
 
   return (
     <div>
-      <Link to="">
-        <Badge color="warning">Go to HomePage</Badge>
-      </Link>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row form>
           <Col xs={2}>
@@ -63,14 +50,62 @@ export default function FormsReact() {
               <input
                 autoFocus
                 className={validation.emailClassName}
-                type="email"  // type="text"
+                type="email" // type="text"
                 name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
                 ref={register({ required: "This field can not be empty!!!" })}
               />
-              {/* <div class="invalid-feedback">This email used before!!!</div>
-              <div class="valid-feedback">This email is available...</div> */}
+              <FormFeedback valid tooltip>
+                Sweet! That email is available
+              </FormFeedback>
+              <FormFeedback tooltip>
+                Oh no! That name is already taken
+              </FormFeedback>
+            </InputGroup>
+            {errors.nameEmail && (
+              <FormText>{errors.nameEmail.message}</FormText>
+            )}
+          </Col>
+          <Col sm={2}>
+            <Button color="link" outline className="m-0 p-0">
+              <h4 className="m-0 p-0">
+                <Badge color="info" pill className="m-1 p-1">
+                  Check me out
+                </Badge>
+              </h4>
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+
+      {/*
+      <Link to="">
+        <Badge color="warning">Go to HomePage</Badge>
+      </Link>      
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Row form>
+          <Col xs={2}>
+            <Label for="idEmail" sm={2}>
+              Email
+            </Label>
+          </Col>
+          <Col xs={6}>
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>@</InputGroupText>
+              </InputGroupAddon>
+              <input
+                autoFocus
+                className={validation.emailClassName}
+                type="email" // type="text"
+                name="nameEmail"
+                id="idEmail"
+                placeholder="Write own e-mail address"
+                ref={register({ required: "This field can not be empty!!!" })}
+              />
+              <div class="invalid-feedback">This email used before!!!</div>
+              <div class="valid-feedback">This email is available...</div>
               <FormFeedback valid tooltip>
                 Sweet! That email is available
               </FormFeedback>
@@ -124,8 +159,8 @@ export default function FormsReact() {
                   },
                 })}
               />
-              {/* <div class="invalid-feedback">Password is wrong!!!</div>
-              <div class="valid-feedback">Password is correct</div> */}
+              <div class="invalid-feedback">Password is wrong!!!</div>
+              <div class="valid-feedback">Password is correct</div>
               <FormFeedback valid tooltip>
                 Password is correct
               </FormFeedback>
@@ -159,6 +194,7 @@ export default function FormsReact() {
           </Col>
         </FormGroup>
       </Form>
+ */}
     </div>
   );
 }
