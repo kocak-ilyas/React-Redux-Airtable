@@ -24,7 +24,7 @@ export default function Footer() {
           <img
             className="shadow-sm justify-content-center rounded-pill m-0 p-0 "
             src={appStore}
-            alt=""
+            alt="appStore"
             width="70"
           />
         </Col>
@@ -32,7 +32,7 @@ export default function Footer() {
           <img
             className="shadow-sm justify-content-center rounded-pill m-0 p-0 "
             src={playStore}
-            alt=""
+            alt="playStore"
             width="70"
           />
         </Col>

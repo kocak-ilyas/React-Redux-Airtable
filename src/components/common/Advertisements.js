@@ -50,7 +50,7 @@ export default function Advertisements() {
           <Col xs="1" lg>
             <img
               src={closeIcon}
-              alt=""
+              alt="closeIcon"
               onClick={() => setFadeIn(!fadeIn)}
               className="mt-4 p-0 rounded-pill"
               width="100%"

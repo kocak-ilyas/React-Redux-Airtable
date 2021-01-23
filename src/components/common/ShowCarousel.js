@@ -51,7 +51,7 @@ export default function ShowCarousel() {
             height="300px"
             className="border-8 justify-content-center "
             src={carousel.fields.image[0].thumbnails.full.url}
-            alt=""
+            alt="carousel.image"
           />
         </a>
       </CarouselItem>

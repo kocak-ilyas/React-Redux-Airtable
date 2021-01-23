@@ -50,7 +50,7 @@ export default function Products() {
               <CardImg
                 width="100%"
                 src={product.fields.image[0].thumbnails.full.url}
-                alt=""
+                alt="CardImg"
               />
               {/* {product.fields.showCart && ( */}
               {/* {showCart && ( */}
