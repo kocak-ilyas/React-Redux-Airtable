@@ -68,7 +68,7 @@ export default function CartPage() {
                       width="10%"
                       height="60%"
                       src={product.fields.image[0].thumbnails.full.url}
-                      alt=""
+                      alt="CardImg"
                     />
                     <CardBody className="m-0 p-0 justify-content-center">
                       <CardText className="m-0 p-0">
