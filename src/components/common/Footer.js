@@ -52,41 +52,50 @@ export default function Footer() {
         <Row>
           <Col xs="4">
             <p className="shadow-sm justify-content-center rounded-pill m-0 pl-5 text-light">
-             All right is reserved...®   &copy;
+              All right is reserved...® &copy;
             </p>
           </Col>
           <Col xs="3"></Col>
           <Col xs="1">
-            <img
-              className="shadow-sm justify-content-center rounded-pill m-0 p-0"
-              src={visa}
-              alt="ilyas.com"
-              width="30"
-            />
+            <Link to="creditcard">
+              <img
+                className="shadow-sm justify-content-center rounded-pill m-0 p-0"
+                src={visa}
+                alt="ilyas.com"
+                width="30"
+              />
+            </Link>
           </Col>
           <Col xs="1">
-            <img
-              className="shadow-sm justify-content-center rounded-pill m-0 p-0"
-              src={master}
-              alt="ilyas.com"
-              width="30"
-            />
+            <Link to="creditcard">
+              <img
+                className="shadow-sm justify-content-center rounded-pill m-0 p-0"
+                src={master}
+                alt="ilyas.com"
+                width="30"
+              />{" "}
+            </Link>
           </Col>
           <Col xs="1">
-            <img
-              className="shadow-sm justify-content-center rounded-pill m-0 p-0"
-              src={paypal}
-              alt="ilyas.com"
-              width="30"
-            />
+            <Link to="creditcard">
+              <img
+                className="shadow-sm justify-content-center rounded-pill m-0 p-0"
+                src={paypal}
+                alt="ilyas.com"
+                width="30"
+              />{" "}
+            </Link>
           </Col>
           <Col xs="1">
-            <img
-              className="shadow-sm justify-content-center rounded-pill m-0 p-0"
-              src={americanExpress}
-              alt="ilyas.com"
-              width="30"
-            />
+            {" "}
+            <Link to="creditcard">
+              <img
+                className="shadow-sm justify-content-center rounded-pill m-0 p-0"
+                src={americanExpress}
+                alt="ilyas.com"
+                width="30"
+              />{" "}
+            </Link>
           </Col>
         </Row>
       </div>
