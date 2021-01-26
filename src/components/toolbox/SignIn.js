@@ -50,7 +50,7 @@ export default function FormsReact() {
               <input
                 autoFocus
                 className={validation.emailClassName}
-                type="email" // type="text"
+                type="text"  //type="email"
                 name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
