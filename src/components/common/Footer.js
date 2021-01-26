@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import appStore from "../../image/appStore.jpg";
 import playStore from "../../image/playStore.jpg";
