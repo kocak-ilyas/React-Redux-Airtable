@@ -16,6 +16,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import MaskInput from "react-maskinput";
 
 export default function CreditCard() {
   const { register, handleSubmit, errors } = useForm();
@@ -34,7 +35,7 @@ export default function CreditCard() {
     console.log(card);
   }, [card]);
   return (
-    <div id="App" className="">
+    <div>
       <h1 className="p-3 m-3 bg-primary text-white themed-container shadow rounded-pill text-center">
         Credit Card Payment
       </h1>
@@ -87,25 +88,36 @@ export default function CreditCard() {
             </Row>
             <Row className="p-0 m-0">
               <input
-                maxlength="16"
-                className="form-control m-1 p-2"
-                type="number"
-                name="number"
-                placeholder="Card Number"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-                onFocus={(e) => setFocus(e.target.name)}
-                ref={register({
-                  required: "This field can not be empty!!!",
-                  minLength: {
-                    value: 16,
-                    message: "Password must be at least 16 characters!!!",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "Password must be maximum of 16 characters!!!",
-                  },
-                })}
+              placeholder="Card Number"
+              pattern="\w\d\w \d\w\d"
+              className="form-control m-1 p-2 masked"
+              data-charset="_X_ X_X"
+              type="text"
+              
+
+                // alwaysShowMask
+                // mask="0000-0000-0000-0000"
+                // size={20}
+                // maskChar="_"
+                // maxlength="16"
+                // className="form-control m-1 p-2"
+                // type="number"
+                // name="number"
+                // placeholder="Card Number"
+                // value={number}
+                // onChange={(e) => setNumber(e.target.value)}
+                // onFocus={(e) => setFocus(e.target.name)}
+                // ref={register({
+                //   required: "This field can not be empty!!!",
+                //   minLength: {
+                //     value: 16,
+                //     message: "Password must be at least 16 characters!!!",
+                //   },
+                //   maxLength: {
+                //     value: 16,
+                //     message: "Password must be maximum of 16 characters!!!",
+                //   },
+                // })}
               />
               {errors.number && <FormText>{errors.number.message}</FormText>}
             </Row>
