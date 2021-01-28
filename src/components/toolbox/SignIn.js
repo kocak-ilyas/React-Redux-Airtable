@@ -32,57 +32,15 @@ export default function FormsReact() {
   const onSubmit = (data) => {
     dispatch(checkUserData(data));
   };
+  const checkMailAvailable = (data) => {
+    // dispatch(checkMail(data));
+  };
 
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Row form>
-          <Col xs={2}>
-            <Label for="idEmail" sm={2}>
-              Email
-            </Label>
-          </Col>
-          <Col xs={6}>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText>@</InputGroupText>
-              </InputGroupAddon>
-              <input
-                autoFocus
-                className={validation.emailClassName}
-                type="text"  //type="email"
-                name="nameEmail"
-                id="idEmail"
-                placeholder="Write own e-mail address"
-                ref={register({ required: "This field can not be empty!!!" })}
-              />
-              <FormFeedback valid tooltip>
-                Sweet! That email is available
-              </FormFeedback>
-              <FormFeedback tooltip>
-                Oh no! That name is already taken
-              </FormFeedback>
-            </InputGroup>
-            {errors.nameEmail && (
-              <FormText>{errors.nameEmail.message}</FormText>
-            )}
-          </Col>
-          <Col sm={2}>
-            <Button color="link" outline className="m-0 p-0">
-              <h4 className="m-0 p-0">
-                <Badge color="info" pill className="m-1 p-1">
-                  Check me out
-                </Badge>
-              </h4>
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-
-      {/*
       <Link to="">
         <Badge color="warning">Go to HomePage</Badge>
-      </Link>      
+      </Link>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row form>
           <Col xs={2}>
@@ -194,7 +152,6 @@ export default function FormsReact() {
           </Col>
         </FormGroup>
       </Form>
- */}
     </div>
   );
 }

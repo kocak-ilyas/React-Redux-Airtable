@@ -86,8 +86,35 @@ export default function CreditCard() {
               {errors.name && <FormText>{errors.name.message}</FormText>}
             </Row>
             <Row className="p-0 m-0">
+              <hr />
+              <form action="">
+  
+  <div>
+    <label for="cc">Credit Card</label>
+    <input id="cc" type="text" data-inputmask="'mask': '9999 9999 9999 9999'" />
+  </div>
+  
+  <div>
+    <label for="date">Date</label>
+    <input id="date" data-inputmask="'alias': 'date'" />
+  </div>
+  
+  <div>
+    <label for="phone">Phone</label>
+    <input id="phone" type="text" />
+  </div>
+
+</form>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+              <input id="cc" type="text" data-inputmask="'mask': '9999 9999 9999 9999'" />
+              <input type="tel" id="pin" name="pin" maxlength="6" size="5" />
+              <input type="number" max="999" />
+              <hr />
               <input
-                maxlength="16"
+                // maxlength="16"
                 className="form-control m-1 p-2"
                 type="number"
                 name="number"

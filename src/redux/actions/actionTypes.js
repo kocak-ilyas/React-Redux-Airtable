@@ -8,3 +8,5 @@ export const UPDATE_TO_CART = "UPDATE_TO_CART";
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
 export const SIGN_IN_FAIL = "SIGN_IN_FAIL";
 export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
+
+export const CHECK_MAIL_AVAİLABLE = "CHECK_MAIL_AVAİLABLE";
