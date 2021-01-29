@@ -35,6 +35,12 @@ export default function FormsReact() {
   const checkMailAvailable = (data) => {
     // dispatch(checkMail(data));
   };
+  const [nameEmail, setNameEmail] = useState("");
+  const onSubmit1 = (e) => {
+    e.preventDefault();
+    setNameEmail(nameEmail);
+    console.log("nameEmail.value", nameEmail.value);
+  };
 
   return (
     <div>
@@ -56,11 +62,14 @@ export default function FormsReact() {
               <input
                 autoFocus
                 className={validation.emailClassName}
-                type="email" // type="text"
+                type="email"
                 name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
-                ref={register({ required: "This field can not be empty!!!" })}
+                ref={
+                  ((mailCheck) => setNameEmail(mailCheck),
+                  register({ required: "This field can not be empty!!!" }))
+                }
               />
               <div class="invalid-feedback">This email used before!!!</div>
               <div class="valid-feedback">This email is available...</div>
@@ -78,11 +87,23 @@ export default function FormsReact() {
           <Col sm={2}>
             <Button color="link" outline className="m-0 p-0">
               <h4 className="m-0 p-0">
-                <Badge color="info" pill className="m-1 p-1">
+                <Badge
+                  color="info"
+                  pill
+                  className="m-1 p-1"
+                  onClick={onSubmit1}
+                >
                   Check me out
                 </Badge>
               </h4>
             </Button>
+            {/* <Button color="link" outline className="m-0 p-0">
+              <h4 className="m-0 p-0">
+                <Badge color="info" pill className="m-1 p-1">
+                  Check me out
+                </Badge>
+              </h4>
+            </Button> */}
           </Col>
         </Row>{" "}
         <br />

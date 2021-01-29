@@ -60,7 +60,7 @@ export default function CreditCard() {
         </div>
       )}
       <hr />
-      <Row className="themed-container border rounded-pill p-5 m-5">
+       <Row className="themed-container border rounded-pill p-5 m-5">
         <Col xs={5} className="m-0 p-0">
           <Cards
             number={number}
@@ -88,36 +88,35 @@ export default function CreditCard() {
             </Row>
             <Row className="p-0 m-0">
               <input
-              placeholder="Card Number"
-              pattern="\w\d\w \d\w\d"
-              className="form-control m-1 p-2 masked"
-              data-charset="_X_ X_X"
-              type="text"
-              
+                className="form-control m-1 p-2"
+                type="number"
+                name="number"
+                placeholder="Card Number"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+                onFocus={(e) => setFocus(e.target.name)}
+                ref={register({
+                  required: "This field can not be empty!!!",
+                  minLength: {
+                    value: 16,
+                    message: "Password must be at least 16 characters!!!",
+                  },
+                  maxLength: {
+                    value: 16,
+                    message: "Password must be maximum of 16 characters!!!",
+                  },
+                })}
+                // placeholder="Card Number"
+                // pattern="\w\d\w \d\w\d"
+                // className="form-control m-1 p-2 masked"
+                // data-charset="_X_ X_X"
+                // type="text"
 
                 // alwaysShowMask
                 // mask="0000-0000-0000-0000"
                 // size={20}
                 // maskChar="_"
                 // maxlength="16"
-                // className="form-control m-1 p-2"
-                // type="number"
-                // name="number"
-                // placeholder="Card Number"
-                // value={number}
-                // onChange={(e) => setNumber(e.target.value)}
-                // onFocus={(e) => setFocus(e.target.name)}
-                // ref={register({
-                //   required: "This field can not be empty!!!",
-                //   minLength: {
-                //     value: 16,
-                //     message: "Password must be at least 16 characters!!!",
-                //   },
-                //   maxLength: {
-                //     value: 16,
-                //     message: "Password must be maximum of 16 characters!!!",
-                //   },
-                // })}
               />
               {errors.number && <FormText>{errors.number.message}</FormText>}
             </Row>
