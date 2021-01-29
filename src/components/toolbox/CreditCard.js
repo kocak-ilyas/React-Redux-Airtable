@@ -2,8 +2,22 @@ import React, { useEffect, useState } from "react";
 import Cards from "react-credit-cards";
 import { useForm } from "react-hook-form";
 import "react-credit-cards/es/styles-compiled.css";
-import {Badge, Button, Card, CardText, CardTitle, Col, CustomInput, Form, FormGroup, FormText, Label, Row} from "reactstrap";
- 
+import {
+  Badge,
+  Button,
+  Card,
+  CardText,
+  CardTitle,
+  Col,
+  CustomInput,
+  Form,
+  FormGroup,
+  FormText,
+  Label,
+  Row,
+} from "reactstrap";
+import MaskInput from "react-maskinput";
+
 export default function CreditCard() {
   const { register, handleSubmit, errors } = useForm();
   const [card, setCard] = useState();
@@ -14,12 +28,14 @@ export default function CreditCard() {
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
   const onSubmit = (data) => {
-    setCard({number: number, name: name, date: date, cvc: cvc});
+    setCard({ number: number, name: name, date: date, cvc: cvc });
     setShowCard(true);
   };
-  useEffect(() => {console.log(card)}, [card]);
+  useEffect(() => {
+    console.log(card);
+  }, [card]);
   return (
-    <div id="App" className="">
+    <div>
       <h1 className="p-3 m-3 bg-primary text-white themed-container shadow rounded-pill text-center">
         Credit Card Payment
       </h1>
@@ -44,7 +60,7 @@ export default function CreditCard() {
         </div>
       )}
       <hr />
-      <Row className="themed-container border rounded-pill p-5 m-5">
+       <Row className="themed-container border rounded-pill p-5 m-5">
         <Col xs={5} className="m-0 p-0">
           <Cards
             number={number}
@@ -90,6 +106,17 @@ export default function CreditCard() {
                     message: "Password must be maximum of 16 characters!!!",
                   },
                 })}
+                // placeholder="Card Number"
+                // pattern="\w\d\w \d\w\d"
+                // className="form-control m-1 p-2 masked"
+                // data-charset="_X_ X_X"
+                // type="text"
+
+                // alwaysShowMask
+                // mask="0000-0000-0000-0000"
+                // size={20}
+                // maskChar="_"
+                // maxlength="16"
               />
               {errors.number && <FormText>{errors.number.message}</FormText>}
             </Row>
@@ -149,18 +176,25 @@ export default function CreditCard() {
                     id="ConditionsCustomSwitch"
                     required
                   />
-                  <h6>I agree to <a href="/">Conditions of Use</a> and{" "}<a href="/">Privacy Notice</a>.</h6>
+                  <h6>
+                    I agree to <a href="/">Conditions of Use</a> and{" "}
+                    <a href="/">Privacy Notice</a>.
+                  </h6>
                 </Row>
               </Label>
             </FormGroup>
             <hr />
             <Row className="p-0 m-0">
               <Col xs={3} className="m-0 p-0">
-                <Button color="success" size="lg" disabled>550$</Button>
+                <Button color="success" size="lg" disabled>
+                  550$
+                </Button>
               </Col>
               <Col xs={6} className="m-0 p-0" />
               <Col xs={3} className="m-0 p-0">
-                <Button color="danger" size="lg">Pay Now</Button>
+                <Button color="danger" size="lg">
+                  Pay Now
+                </Button>
               </Col>
             </Row>
           </Form>
