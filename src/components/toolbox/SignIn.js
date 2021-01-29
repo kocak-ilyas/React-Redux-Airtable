@@ -93,7 +93,7 @@ export default function FormsReact() {
               </h4>
             </Button>
           </Col>
-        </Row>
+        </Row>{" "}
         <br />
         <Row form>
           <Col sm={2}>
