@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
-import { checkUserData } from "../../redux/actions/userActions";
+import { checkMail, checkUserData } from "../../redux/actions/userActions";
 
 export default function FormsReact() {
   const { register, handleSubmit, errors } = useForm();
@@ -32,16 +32,11 @@ export default function FormsReact() {
   const onSubmit = (data) => {
     dispatch(checkUserData(data));
   };
-  const checkMailAvailable = (data) => {
-    // dispatch(checkMail(data));
-  };
-  const [nameEmail, setNameEmail] = useState("");
-  const onSubmit1 = (e) => {
+  const checkMailAvailable = (e) => {
     e.preventDefault();
-    setNameEmail(nameEmail);
-    console.log("nameEmail.value", nameEmail.value);
+    dispatch(checkMail(e));
   };
-
+  
   return (
     <div>
       <Link to="">
@@ -91,19 +86,12 @@ export default function FormsReact() {
                   color="info"
                   pill
                   className="m-1 p-1"
-                  onClick={onSubmit1}
+                  onClick={checkMailAvailable}
                 >
                   Check me out
                 </Badge>
               </h4>
             </Button>
-            {/* <Button color="link" outline className="m-0 p-0">
-              <h4 className="m-0 p-0">
-                <Badge color="info" pill className="m-1 p-1">
-                  Check me out
-                </Badge>
-              </h4>
-            </Button> */}
           </Col>
         </Row>{" "}
         <br />
