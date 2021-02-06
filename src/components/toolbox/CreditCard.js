@@ -16,7 +16,6 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import MaskInput from "react-maskinput";
 
 export default function CreditCard() {
   const { register, handleSubmit, errors } = useForm();
@@ -60,7 +59,7 @@ export default function CreditCard() {
         </div>
       )}
       <hr />
-       <Row className="themed-container border rounded-pill p-5 m-5">
+      <Row className="themed-container border rounded-pill p-5 m-5">
         <Col xs={5} className="m-0 p-0">
           <Cards
             number={number}
@@ -106,17 +105,6 @@ export default function CreditCard() {
                     message: "Password must be maximum of 16 characters!!!",
                   },
                 })}
-                // placeholder="Card Number"
-                // pattern="\w\d\w \d\w\d"
-                // className="form-control m-1 p-2 masked"
-                // data-charset="_X_ X_X"
-                // type="text"
-
-                // alwaysShowMask
-                // mask="0000-0000-0000-0000"
-                // size={20}
-                // maskChar="_"
-                // maxlength="16"
               />
               {errors.number && <FormText>{errors.number.message}</FormText>}
             </Row>
@@ -203,3 +191,81 @@ export default function CreditCard() {
     </div>
   );
 }
+/*
+import MaskInput from "react-maskinput";
+<div>
+      <MaskInput
+        alwaysShowMask
+        mask="0000-0000-0000-0000"
+        size={20}
+        maskChar="_"
+      />
+      <MaskInput alwaysShowMask mask="00/00" size={20} showMask maskChar="_" />
+      <MaskInput
+        alwaysShowMask
+        mask={"+1 (000) 000 - 0000"}
+        size={20}
+        maskChar="_"
+      />
+
+      <form action="">
+        <div>
+          <label for="cc">Expiration Date</label>
+          <input
+            id="cc"
+            type="text"
+            placeholder="MM/YY"
+            class="masked"
+            pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)"
+            data-valid-example="05/18"
+          />
+        </div>
+
+        <div>
+          <label for="czc">Canadian Zip Code</label>
+          <input
+            id="czc"
+            placeholder="XXX XXX"
+            pattern="\w\d\w \d\w\d"
+            class="masked"
+            data-charset="_X_ X_X"
+            id="zipca"
+            type="text"
+            name="zipcodeca"
+            title="6-character alphanumeric zip code in the format of A1A 1A1"
+          />
+        </div>
+      </form>
+    </div>
+          <input
+          className="form-control m-1 p-2"
+          type="number"
+          name="number"
+          placeholder="Card Number"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          onFocus={(e) => setFocus(e.target.name)}
+          ref={register({
+            required: "This field can not be empty!!!",
+            minLength: {
+              value: 16,
+              message: "Password must be at least 16 characters!!!",
+            },
+            maxLength: {
+              value: 16,
+              message: "Password must be maximum of 16 characters!!!",
+            }, 
+               placeholder="Card Number"
+          pattern="\w\d\w \d\w\d"
+          className="form-control m-1 p-2 masked"
+          data-charset="_X_ X_X"
+          type="text"
+
+          alwaysShowMask
+          mask="0000-0000-0000-0000"
+          size={20}
+          maskChar="_"
+          maxlength="16"
+          })}
+      />
+      */
