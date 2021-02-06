@@ -1,4 +1,3 @@
-import React from "react";
 import * as actionTypes from "./actionTypes";
 import Airtable from "airtable";
 const table = new Airtable({ apiKey: process.env.REACT_APP_airtable_key }).base(
@@ -18,6 +17,7 @@ export const checkMail = (checkMailData) => (dispatch) => {
           : null;
       });
     });
+    console.log(checkMailData.value)
 };
 
 export const checkUserData = (checkData) => (dispatch) => {

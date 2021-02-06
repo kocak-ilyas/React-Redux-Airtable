@@ -161,6 +161,9 @@ export default function FormsReact() {
           </Col>
         </FormGroup>
       </Form>
+      <Link to="createAcount">
+        <Badge color="success">Create new acount</Badge>
+      </Link>
     </div>
   );
 }

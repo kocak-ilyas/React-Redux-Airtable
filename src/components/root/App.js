@@ -7,6 +7,7 @@ import CartPage from "../cart/CartPage";
 import NotFound from "../common/NotFound";
 import SignIn from "../toolbox/SignIn";
 import CreditCard from "../toolbox/CreditCard";
+import CreateAcount from "../toolbox/CreateAcount";
 
 export default function App() { 
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route exact path="/cart" component={CartPage} />
         <Route path="/signIn" component={SignIn} />
         <Route path="/creditcard" component={CreditCard} />
+        <Route path="/createAcount" component={CreateAcount} />
         <Route component={NotFound} />
       </Switch>
     </div>
