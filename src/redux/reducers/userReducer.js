@@ -1,5 +1,16 @@
 import * as actionTypes from "../actions/actionTypes";
 
+export const checkMailReducer = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.CHECK_MAIL_AVAİLABLE_TRUE:
+      return action.payload;
+    case actionTypes.CHECK_MAIL_AVAİLABLE_FALSE:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const userDataReducer = (state = [], action) => {
   switch (action.type) {
     case actionTypes.SIGN_IN_SUCCESS:

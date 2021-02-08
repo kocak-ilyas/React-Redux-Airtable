@@ -29,16 +29,12 @@ export default function FormsReact() {
     isPasswordValidation: false,
     passwordClassName: "form-control", // form-control is-invalid
   });
+  const [inputMailData, setInputMailData] = useState(null);
+  const checkMailAvailable = () => {
+    dispatch(checkMail(inputMailData));
+  };
   const onSubmit = (data) => {
     dispatch(checkUserData(data));
-  };
-  const checkMailAvailable = (e) => {
-    e.preventDefault();
-    dispatch(checkMail(e));
-  };
-  const [inputMailData, setInputMailData] = useState(null);
-  const sendCheckMail = () => {
-    console.log(inputMailData);
   };
   return (
     <div>
@@ -60,14 +56,12 @@ export default function FormsReact() {
               <input
                 autoFocus
                 className={validation.emailClassName}
-                type="text" // type="email"
-                name="email" //  name="nameEmail"
+                type="email"
+                name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
-                // ref={register({ required: "This field can not be empty!!!" })}
-                onChange={(event) => {
-                  setInputMailData({ email: event.target.value });
-                }}
+                ref={register({ required: "This field can not be empty!!!" })}
+                onChange={(e) => {setInputMailData(e.target.value)}}
               />
               <div class="invalid-feedback">This email used before!!!</div>
               <div class="valid-feedback">This email is available...</div>
@@ -87,15 +81,10 @@ export default function FormsReact() {
               color="link"
               outline
               className="m-0 p-0"
-              onClick={sendCheckMail}
+              onClick={checkMailAvailable}
             >
               <h4 className="m-0 p-0">
-                <Badge
-                  color="info"
-                  pill
-                  className="m-1 p-1"
-                  // onClick={checkMailAvailable}
-                >
+                <Badge color="info" pill className="m-1 p-1">
                   Check me out
                 </Badge>
               </h4>
