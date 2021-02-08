@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   Badge,
   Button,
@@ -12,33 +13,39 @@ import {
   Col,
   FormText,
   Row,
+  FormFeedback,
   CustomInput,
 } from "reactstrap";
 import { FcKey } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { checkMail, checkUserData } from "../../redux/actions/userActions";
 
-export default function CreateAccount() {
-  const [nameEmail, setNameEmail] = useState("")
-
+export default function FormsReact() {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
-  const onSubmit = (e) => {
-    // e.preventDefault();
-    dispatch(checkUserData(e));
+  const [validation, setValidation] = useState({
+    isEmailValidation: false,
+    emailClassName: "form-control", // form-control is-invalid
+    isPasswordValidation: false,
+    passwordClassName: "form-control", // form-control is-invalid
+  });
+  const onSubmit = (data) => {
+    dispatch(checkUserData(data));
   };
-  const checkMailAvailable = () => {console.log(nameEmail.current.value)};
-  // const checkMailAvailable = (e) => {
-  //   e.preventDefault();
-  //   dispatch(checkMail(e));
-  //   console.log(e.target.value)
-  //   console.log(nameEmail)
-  // };
-
-
+  const checkMailAvailable = (e) => {
+    e.preventDefault();
+    dispatch(checkMail(e));
+  };
+  const [inputMailData, setInputMailData] = useState(null);
+  const sendCheckMail = () => {
+    console.log(inputMailData);
+  };
   return (
     <div>
-           <Form onSubmit={handleSubmit(onSubmit)}>
+      <Link to="">
+        <Badge color="warning">Go to HomePage</Badge>
+      </Link>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Row form>
           <Col xs={2}>
             <Label for="idEmail" sm={2}>
@@ -52,26 +59,42 @@ export default function CreateAccount() {
               </InputGroupAddon>
               <input
                 autoFocus
-                className="form-control"
-                type="email"
-                name="nameEmail"
+                className={validation.emailClassName}
+                type="text" // type="email"
+                name="email" //  name="nameEmail"
                 id="idEmail"
                 placeholder="Write own e-mail address"
-                ref={
-                  ((mailCheck) => setNameEmail(mailCheck),
-                  register({ required: "This field can not be empty!!!" }))
-                }
+                // ref={register({ required: "This field can not be empty!!!" })}
+                onChange={(event) => {
+                  setInputMailData({ email: event.target.value });
+                }}
               />
+              <div class="invalid-feedback">This email used before!!!</div>
+              <div class="valid-feedback">This email is available...</div>
+              <FormFeedback valid tooltip>
+                Sweet! That email is available
+              </FormFeedback>
+              <FormFeedback tooltip>
+                Oh no! That name is already taken
+              </FormFeedback>
             </InputGroup>
-                    </Col>
+            {errors.nameEmail && (
+              <FormText>{errors.nameEmail.message}</FormText>
+            )}
+          </Col>
           <Col sm={2}>
-            <Button color="link" outline className="m-0 p-0">
+            <Button
+              color="link"
+              outline
+              className="m-0 p-0"
+              onClick={sendCheckMail}
+            >
               <h4 className="m-0 p-0">
                 <Badge
                   color="info"
                   pill
                   className="m-1 p-1"
-                  onClick={checkMailAvailable}
+                  // onClick={checkMailAvailable}
                 >
                   Check me out
                 </Badge>
@@ -94,17 +117,33 @@ export default function CreateAccount() {
                 </InputGroupText>
               </InputGroupAddon>
               <input
-                className="form-control"
-                type="passw={ord"
+                className={validation.passwordClassName}
+                type="password"
                 name="namePassword"
                 id="idPassword"
                 placeholder="Don't tell anyone your password!!!"
                 ref={register({
                   required: "This field can not be empty!!!",
-                           })}
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 8 characters!!!",
+                  },
+                  maxLength: {
+                    value: 12,
+                    message: "Password must be maximum of 12 characters!!!",
+                  },
+                })}
               />
+              <div class="invalid-feedback">Password is wrong!!!</div>
+              <div class="valid-feedback">Password is correct</div>
+              <FormFeedback valid tooltip>
+                Password is correct
+              </FormFeedback>
+              <FormFeedback tooltip>Password is wrong!!!</FormFeedback>
             </InputGroup>
-           
+            {errors.namePassword && (
+              <FormText>{errors.namePassword.message}</FormText>
+            )}
           </Col>
         </Row>
         <FormGroup>
@@ -130,6 +169,124 @@ export default function CreateAccount() {
           </Col>
         </FormGroup>
       </Form>
+      <Link to="createAcount">
+        <Badge color="success">Create new acount</Badge>
+      </Link>
     </div>
   );
 }
+/*
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Input } from "reactstrap";
+
+const MyInput = ({ name, label, register }) => {
+  return (
+    <>
+      <label htmlFor={name}>{label}</label>
+      <input name={name} placeholder="Jane" ref={register} />
+    </>
+  );
+};
+
+export default function FormsReact() {
+  const { register, handleSubmit, setValue } = useForm();
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data, null));
+  };
+  const [values, setReactSelect] = useState({
+    selectedOption: [],
+  });
+
+  const handleMultiChange = (selectedOption) => {
+    setValue("reactSelect", selectedOption);
+    setReactSelect({ selectedOption });
+  };
+
+  const hanleChange = (e) => {
+    setValue("antDInput", e.target.value);
+  };
+
+  useEffect(() => {
+    register({ name: "reactSelect" });
+    register({ name: "antDInput" });
+  }, [register]);
+
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <MyInput name="firstName" label="First Name" register={register} />
+        </div>
+
+        <div>
+          <label htmlFor="lastName">Last Name</label>
+          <input name="lastName" placeholder="Luo" ref={register} />
+        </div>
+
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            placeholder="bluebill1049@hotmail.com"
+            type="email"
+            ref={register}
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+
+import React, { useEffect, useState } from "react";
+
+export default function NotFound() {
+  const [textInput, setTextInput] = useState(null);
+
+  const focusTextInput = () => {
+    console.log(textInput);
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        name="email"
+        onChange={(event) => {
+          setTextInput({email: event.target.value });
+        }}
+      />
+      <button
+        onClick={focusTextInput}
+      />
+    </div>
+  );
+}
+
+
+class User extends Component {
+  constructor(props) {
+    super();
+    this.nameField = React.createRef();
+    this.onClick = this.focusOnNameField.bind(this);
+    this.state = {
+      name: props.name,
+    };
+  }
+  focusOnNameField = () => {
+    this.nameField.current.focus();
+  };
+
+  render() {
+    return (
+      <div>
+        <input ref={this.nameField} name="username" value={this.state.name} />
+        <button onClick={this.onClick}>Fous on field</button>
+      </div>
+    );
+  }
+}
+*/
