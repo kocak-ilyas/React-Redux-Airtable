@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import moment from "moment";
 
 import { Container, Row, Col } from "reactstrap";
 import Fade from "react-reveal/Fade";
@@ -13,6 +16,11 @@ import CartColumn from "../cart/CartColumn";
 import Footer from "../common/Footer";
 
 export default function Dashboard() {
+  const [dateState, setDateState] = useState(new Date());
+  const changeDate = (e) => {
+    setDateState(e);
+  };
+
   return (
     <div className="container-fluid mt-4">
       <Advertisements />
@@ -32,6 +40,11 @@ export default function Dashboard() {
           </Row>
         </Container>
       </Fade>
+      <Calendar value={dateState} onChange={changeDate} />
+      <p>
+        Current selected date is{" "}
+        <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+      </p>
       <Footer />
     </div>
   );
