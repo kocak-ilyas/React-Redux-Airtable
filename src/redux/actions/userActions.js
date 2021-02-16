@@ -1,8 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import Airtable from "airtable";
-const table = new Airtable({ apiKey: process.env.REACT_APP_airtable_key }).base(
-  process.env.REACT_APP_airtable_base
-);
+import { table } from "../../dataBase/airtableConnection";
 
 export const checkMail = (inputMailData) => (dispatch) => {
   table("users")

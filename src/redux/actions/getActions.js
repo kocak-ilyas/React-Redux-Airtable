@@ -1,9 +1,5 @@
 import * as actionTypes from "./actionTypes";
-
-import Airtable from "airtable";
-const table = new Airtable({ apiKey: process.env.REACT_APP_airtable_key }).base(
-  process.env.REACT_APP_airtable_base
-);
+import { table } from "../../dataBase/airtableConnection";
 
 export const getAdvertisements = () => (dispatch) => {
   table("advertisement")
@@ -13,11 +9,11 @@ export const getAdvertisements = () => (dispatch) => {
     })
     .eachPage((records) => {
       dispatch({ type: actionTypes.GET_ADVERTISEMENTS, payload: records });
-    })
-    // .catch((error) => {
-    //   // console.log("there is a error");
-    //   throw error;
-    // });
+    });
+  // .catch((error) => {
+  //   // console.log("there is a error");
+  //   throw error;
+  // });
 };
 
 export const getTopNavbar = () => (dispatch) => {
