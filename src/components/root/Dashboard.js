@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import { CircularProgress } from "@material-ui/core";
 
 import { Container, Row, Col } from "reactstrap";
 import Fade from "react-reveal/Fade";
@@ -44,6 +45,7 @@ export default function Dashboard() {
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+        <CircularProgress />
       </p>
       <Footer />
     </div>

@@ -84,18 +84,17 @@ export default function Footer() {
                 src={paypal}
                 alt="ilyas.com"
                 width="30"
-              />{" "}
+              />
             </Link>
           </Col>
           <Col xs="1">
-            {" "}
             <Link to="creditcard">
               <img
                 className="shadow-sm justify-content-center rounded-pill m-0 p-0"
                 src={americanExpress}
                 alt="ilyas.com"
                 width="30"
-              />{" "}
+              />
             </Link>
           </Col>
         </Row>
