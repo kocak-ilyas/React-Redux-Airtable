@@ -37,7 +37,7 @@ export default function CartColumn() {
   }, [currentCart]);
   return (
     <div>
-      {currentCart.cart.length === 0 ? (
+      {!currentCart.cart.length ? (
         <div>There is no Product in cart</div>
       ) : (
         <div>
