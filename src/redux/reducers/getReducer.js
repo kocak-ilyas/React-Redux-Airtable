@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../../constants/actionTypes";
 
 export const advertisementsReducer = (state = [], action) => {
   switch (action.type) {
