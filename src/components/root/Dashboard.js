@@ -25,7 +25,6 @@ export default function Dashboard() {
   return (
     <div className="container-fluid mt-4">
       <Advertisements />
-             <a href="https://www.google.com/maps/place/Rag%C4%B1p+T%C3%BCz%C3%BCn,+Rag%C4%B1p+T%C3%BCz%C3%BCn+Cd.+No:143,+06170+Yenimahalle%2FAnkara/@39.9659687,32.8090921,51m/data=!3m1!1e3!4m5!3m4!1s0x14d34ead2806be7d:0x580a3e66f2b254fb!8m2!3d39.965932!4d32.809137" className='text iconSpan'>address</a>
       <Fade fluid bottom cascade>
         <Container fluid>
           <Search />
